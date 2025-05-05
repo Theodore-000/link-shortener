@@ -1,0 +1,23 @@
+{% extends 'links/_base.html' %} {% block content %}
+<div>
+  <ul class="flex flex-wrap space-y-10 items-start justify-center p-10">
+    {% for link in links %}
+    <li
+      class="border border-gray-800 p-3 flex justify-between items-stretch space-x-10 mr-3">
+      <div>
+        <p>{{ link.name }}</p>
+        <a href="{{ link.url }}" class="underline">{{ link.url }}</a>
+      </div>
+      <div class="flex flex-col items-start justify-center">
+        <p>Clicks: {{ link.clicks }}</p>
+        <p class="underline">
+          <a target="_blank" href="{% url 'root-link' link.slug %}">
+            Open/ {{ link.slug }} ➡️
+          </a>
+        </p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}
